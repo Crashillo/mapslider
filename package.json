@@ -1,6 +1,9 @@
 {
   "name": "mapslider",
   "version": "0.0.0",
+  "scripts": {
+    "postinstall": "bower install"
+  },
   "devDependencies": {
     "gulp": "^3.6.2",
     "gulp-autoprefixer": "0.0.7",
