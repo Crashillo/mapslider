@@ -10,6 +10,7 @@
 		center: [37.143, -4.790],
 		zoom: 5
 	});
+	
 	/* variables */
 	var totals, geojson;
 
@@ -22,20 +23,6 @@
 
 	function setValue(o, p) {
 		document.getElementById(o).innerHTML = p.toLocaleString();
-	}
-
-	function getColor(d) {
-		return d > 5000000 ? '#800026' :
-			d > 2000000 ? '#8c193b' :
-			d > 1500000 ? '#993251' :
-			d > 1200000 ? '#a64c67' :
-			d > 900000 ? '#b2667c' :
-			d > 750000 ? '#bf7f92' :
-			d > 600000 ? '#cc99a8' :
-			d > 400000 ? '#d8b2bd' :
-			d > 250000 ? '#e5ccd3' :
-			d > 100000 ? '#f2e5e9' :
-			'#ffffff';
 	}
 
 	function getLimitColor(d, limit) {
@@ -103,7 +90,7 @@
 
 	/* slider */
 	$('#slider').slider({
-		create: function(event, ui) {
+		create: function() {
 			setValue('explanation', $('#slider').slider('value'));
 		},
 		slide: function(event, ui) {
@@ -117,7 +104,7 @@
 	});
 
 	/* datos INE - provincias */
-	$.get('https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/2852?nult=1', function(p) {
+	$.get('http://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/2852?nult=1', function(p) {
 		totals = _.filter(p, function(o) {
 			return o.Nombre.indexOf('Total.') > -1;
 		});
